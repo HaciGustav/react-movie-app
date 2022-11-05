@@ -4,8 +4,8 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #333;
-    height: 2.5rem;
+    background-color: #222;
+    height: 3rem;
 `;
 
 export const SearchBar = styled.input`
@@ -19,15 +19,19 @@ export const SearchBar = styled.input`
     }
 `;
 export const SearchBtn = styled.button`
+    display: flex;
+    align-items: center;
     border: none;
     border-radius: 0 5px 5px 0;
     background-color: #fff;
     color: #222;
+    padding-inline: 0.5rem;
+    cursor: pointer;
 `;
 export const Form = styled.form`
     display: flex;
     width: 30%;
-    height: 80%;
+    height: 2rem;
 `;
 export const SignInBtn = styled(SearchBtn)`
     border: none;
