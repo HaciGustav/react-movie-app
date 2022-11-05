@@ -5,6 +5,7 @@ import {
     CardContainer,
     Container,
     Img,
+    Info,
     MovieName,
     Rate,
     RateWrap,
@@ -24,6 +25,7 @@ const MovieCard = () => {
                     <Rate>8.1</Rate>
                 </RateWrap>
                 <MovieName>47 Ronin</MovieName>
+                <Info></Info>
             </CardContainer>
         </>
     );
