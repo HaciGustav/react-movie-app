@@ -48,6 +48,7 @@ export const SignInBtn = styled(SearchBtn)`
 export const SignUpBtn = styled(SignInBtn)``;
 export const BtnWrap = styled.div`
     display: flex;
+    align-items: center;
     column-gap: 5px;
     height: 100%;
 `;

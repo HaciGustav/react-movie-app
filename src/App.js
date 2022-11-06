@@ -1,19 +1,22 @@
 import './App.css';
 import Footer from './components/footer/Footer';
-import MovieCard from './components/movie-card/MovieCard';
 import Navbar from './components/navbar/Navbar';
-import Main from './pages/main/Main';
+import AuthProvider from './context/AuthProvider';
+import UserProvider from './context/UserProvider';
+import Home from './pages/home/Home';
 import GlobalStyle from './style/GlobalStyle';
 
 function App() {
     return (
-        <>
-            <Navbar />
-            <Main />
+        <AuthProvider>
+            <UserProvider>
+                <Navbar />
+                <Home />
 
-            <Footer />
-            <GlobalStyle />
-        </>
+                <Footer />
+                <GlobalStyle />
+            </UserProvider>
+        </AuthProvider>
     );
 }
 

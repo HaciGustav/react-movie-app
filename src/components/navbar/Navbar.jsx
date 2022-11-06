@@ -9,8 +9,14 @@ import {
     SignUpBtn,
 } from './Navbar.style';
 import { BsSearch } from 'react-icons/bs';
+import { useUserContext } from '../../context/UserProvider';
+import { useAuthContext } from '../../context/AuthProvider';
+import { AiOutlineUser } from 'react-icons/ai';
 
 const Navbar = () => {
+    const { handleShowLogin, handleShowRegister } = useUserContext();
+    const { user } = useAuthContext();
+    console.log(user);
     return (
         <Nav>
             {' '}
@@ -22,7 +28,26 @@ const Navbar = () => {
                 </SearchBtn>
             </Form>
             <BtnWrap>
-                <SignInBtn>LOGIN</SignInBtn> <SignUpBtn>REGISTER</SignUpBtn>
+                {user ? (
+                    <>
+                        <SignInBtn>LOG OUT</SignInBtn>
+                        <AiOutlineUser
+                            size={30}
+                            color="#000"
+                            style={{
+                                backgroundColor: '#444',
+                                borderRadius: '50%',
+                            }}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <SignInBtn onClick={handleShowLogin}>LOG IN</SignInBtn>
+                        <SignUpBtn onClick={handleShowRegister}>
+                            REGISTER
+                        </SignUpBtn>
+                    </>
+                )}
             </BtnWrap>
         </Nav>
     );
