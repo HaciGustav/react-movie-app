@@ -10,7 +10,7 @@ function App() {
         <>
             <Navbar />
             <Main />
-            <MovieCard />
+
             <Footer />
             <GlobalStyle />
         </>

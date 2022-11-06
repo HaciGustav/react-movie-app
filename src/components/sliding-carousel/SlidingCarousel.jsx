@@ -50,7 +50,10 @@ function SlidingCarousel() {
                                                 Adam is freed from his earthly
                                                 tomb, ready to unleash his
                                                 unique form of justice on the
-                                                modern world.
+                                                modern world. Adam is freed from
+                                                his earthly tomb, ready to
+                                                unleash his unique form of
+                                                justice on the modern world.
                                             </Info>
                                         </CardContainer>
                                     );

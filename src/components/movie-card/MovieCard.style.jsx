@@ -12,13 +12,13 @@ export const Img = styled.img`
 export const Info = styled.div`
     background-color: #000000b3;
     color: white;
+    line-height: 1.1;
+    font-size: 0.9rem;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 75%;
-    padding-top: 0.5rem;
-    padding-inline: 0.5rem;
+    padding: 0.5rem;
     overflow: hidden;
     transform: translateX(100%);
     visibility: hidden;
