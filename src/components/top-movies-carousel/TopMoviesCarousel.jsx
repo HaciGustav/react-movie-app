@@ -8,7 +8,10 @@ import {
     Poster,
 } from './TopMoviesCarousel.style';
 
-function TopMoviesCarousel() {
+function TopMoviesCarousel({ data }) {
+    const topMovies = data.slice(0, 10);
+
+    console.log(topMovies);
     return (
         <Carousel
             style={{
@@ -17,74 +20,26 @@ function TopMoviesCarousel() {
                 color: '#000',
                 position: 'relative',
             }}>
-            <Carousel.Item interval={1500}>
-                <Img
-                    className="d-block w-100"
-                    alt="First slide"
-                    src="https://image.tmdb.org/t/p/w1280/naNXYdBzTEb1KwOdi1RbBkM9Zv1.jpg"
-                />
-                <Caption>
-                    <Poster src="https://image.tmdb.org/t/p/w1280/kjFDIlUCJkcpFxYKtE6OsGcAfQQ.jpg" />
-                    <InfoDiv>
-                        <Label>Movie Name</Label>
-                        <Overview>
-                            Despite his family's baffling generations-old ban on
-                            music, Miguel dreams of becoming an accomplished
-                            musician like his idol, Ernesto de la Cruz.
-                        </Overview>
-                    </InfoDiv>
-                </Caption>
-            </Carousel.Item>
-            <Carousel.Item interval={1500}>
-                <Img
-                    className="d-block w-100"
-                    alt="First slide"
-                    src="https://image.tmdb.org/t/p/w1280/naNXYdBzTEb1KwOdi1RbBkM9Zv1.jpg"
-                />
-                <Caption>
-                    <Poster src="https://image.tmdb.org/t/p/w1280/kjFDIlUCJkcpFxYKtE6OsGcAfQQ.jpg" />
-                    <InfoDiv>
-                        <Label>Movie Name</Label>
-                        <Overview>
-                            Despite his family's baffling generations-old ban on
-                            music, Miguel dreams of becoming an accomplished
-                            musician like his idol, Ernesto de la Cruz.
-                            Desperate to prove his talent, Miguel finds himself
-                            in the stunning and colorful Land of the Dead
-                            following a mysterious chain of events. Along the
-                            way, he meets charming trickster Hector, and
-                            together, they set off on an extraordinary journey
-                            to unlock the real story behind Miguel's family
-                            history.
-                        </Overview>
-                    </InfoDiv>
-                </Caption>
-            </Carousel.Item>
-            <Carousel.Item interval={1500}>
-                <Img
-                    className="d-block w-100"
-                    alt="First slide"
-                    src="https://image.tmdb.org/t/p/w1280/naNXYdBzTEb1KwOdi1RbBkM9Zv1.jpg"
-                />
-                <Caption>
-                    <Poster src="https://image.tmdb.org/t/p/w1280/kjFDIlUCJkcpFxYKtE6OsGcAfQQ.jpg" />
-                    <InfoDiv>
-                        <Label>Movie Name</Label>
-                        <Overview>
-                            Despite his family's baffling generations-old ban on
-                            music, Miguel dreams of becoming an accomplished
-                            musician like his idol, Ernesto de la Cruz.
-                            Desperate to prove his talent, Miguel finds himself
-                            in the stunning and colorful Land of the Dead
-                            following a mysterious chain of events. Along the
-                            way, he meets charming trickster Hector, and
-                            together, they set off on an extraordinary journey
-                            to unlock the real story behind Miguel's family
-                            history.
-                        </Overview>
-                    </InfoDiv>
-                </Caption>
-            </Carousel.Item>
+            {topMovies.map((movie) => {
+                return (
+                    <Carousel.Item key={movie?.id} interval={1500}>
+                        <Img
+                            className="d-block w-100"
+                            alt="Slide"
+                            src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+                        />
+                        <Caption>
+                            <Poster
+                                src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+                            />
+                            <InfoDiv>
+                                <Label>{movie.title}</Label>
+                                <Overview>{movie.overview}</Overview>
+                            </InfoDiv>
+                        </Caption>
+                    </Carousel.Item>
+                );
+            })}
         </Carousel>
     );
 }

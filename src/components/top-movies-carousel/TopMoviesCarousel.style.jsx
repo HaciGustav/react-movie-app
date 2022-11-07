@@ -27,15 +27,17 @@ export const Poster = styled.img`
 export const InfoDiv = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
     text-align: left;
     padding-inline: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 5%;
+    background-color: #00000078;
 `;
 export const Label = styled.p`
     font-size: 1.2rem;
     font-weight: 600;
     padding: 0 0.5rem;
-    color: #ccc;
+    color: #bbb; ;
 `;
 export const Overview = styled.p`
     font-size: 0.9rem;

@@ -7,8 +7,13 @@ import { Form, Input, Submit } from './LoginPage.style';
 
 const LoginPage = () => {
     const { showLogin, handleCloseLogin, handleShowLogin } = useUserContext();
-    const { loginEmail, loginPassword, setLoginEmail, setLoginPassword } =
-        useAuthContext();
+    const {
+        loginEmail,
+        loginPassword,
+        setLoginEmail,
+        setLoginPassword,
+        handleLogin,
+    } = useAuthContext();
     const handleEmail = (e) => {
         setLoginEmail(e.target.value);
         console.log(loginEmail);
@@ -41,7 +46,13 @@ const LoginPage = () => {
                             type={'password'}
                             placeholder="Password"
                         />
-                        <Submit>LOGIN</Submit>
+                        <Submit
+                            onClick={(e) => {
+                                handleLogin(e);
+                                handleCloseLogin();
+                            }}>
+                            LOGIN
+                        </Submit>
                     </Form>
                 </Offcanvas.Body>
             </Offcanvas>

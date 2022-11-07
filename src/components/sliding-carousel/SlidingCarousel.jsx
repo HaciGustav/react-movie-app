@@ -12,13 +12,18 @@ import {
 import { AiFillStar } from 'react-icons/ai';
 import { Card, Stack } from 'react-bootstrap';
 
-function SlidingCarousel() {
+function SlidingCarousel({ data }) {
+    const slide1 = data.slice(0, 4);
+    const slide2 = data.slice(5, 9);
+    const slide3 = data.slice(10, 14);
+    const slides = [slide1, slide2, slide3];
+
     return (
         <Container style={{ height: '30%' }}>
-            <H2>Drama</H2>
+            <H2>Most Viewed</H2>
             <div className="">
                 <Carousel style={{}}>
-                    {[''].map((slide) => (
+                    {slides.map((slide) => (
                         <Carousel.Item
                             interval={2000}
                             style={{ backgroundColor: '#000' }}>
@@ -26,35 +31,25 @@ function SlidingCarousel() {
                                 direction="horizontal"
                                 className="h-100 justify-content-center align-items-center"
                                 gap={3}>
-                                {['', '', '', ''].map((card, i) => {
+                                {slide.map((movie) => {
                                     return (
-                                        <CardContainer key={i}>
+                                        <CardContainer key={movie.id}>
                                             <Img
                                                 className="d-block "
-                                                src="https://image.tmdb.org/t/p/w1280/kjFDIlUCJkcpFxYKtE6OsGcAfQQ.jpg"
-                                                alt="First slide"
+                                                src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}
+                                                alt="Slide"
                                             />
                                             <RateWrap>
                                                 <AiFillStar
                                                     size={20}
                                                     color={'yellow'}
                                                 />
-                                                <Rate>8.1</Rate>
+                                                <Rate>
+                                                    {movie.vote_average}
+                                                </Rate>
                                             </RateWrap>
-                                            <MovieName>47 Ronin</MovieName>
-                                            <Info>
-                                                Nearly 5,000 years after he was
-                                                bestowed with the almighty
-                                                powers of the Egyptian gods—and
-                                                imprisoned just as quickly—Black
-                                                Adam is freed from his earthly
-                                                tomb, ready to unleash his
-                                                unique form of justice on the
-                                                modern world. Adam is freed from
-                                                his earthly tomb, ready to
-                                                unleash his unique form of
-                                                justice on the modern world.
-                                            </Info>
+                                            <MovieName>{movie.title}</MovieName>
+                                            <Info>{movie.overview}</Info>
                                         </CardContainer>
                                     );
                                 })}

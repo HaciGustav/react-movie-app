@@ -15,11 +15,10 @@ import { AiOutlineUser } from 'react-icons/ai';
 
 const Navbar = () => {
     const { handleShowLogin, handleShowRegister } = useUserContext();
-    const { user } = useAuthContext();
-    console.log(user);
+    const { user, handleLogout } = useAuthContext();
+
     return (
         <Nav>
-            {' '}
             <span>LOGO</span>
             <Form>
                 <SearchBar />
@@ -30,7 +29,7 @@ const Navbar = () => {
             <BtnWrap>
                 {user ? (
                     <>
-                        <SignInBtn>LOG OUT</SignInBtn>
+                        <SignInBtn onClick={handleLogout}>LOG OUT</SignInBtn>
                         <AiOutlineUser
                             size={30}
                             color="#000"
