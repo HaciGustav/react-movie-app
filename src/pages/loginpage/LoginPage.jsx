@@ -7,9 +7,10 @@ import { BtnWrapper, Form, Input, Submit } from './LoginPage.style';
 import { handleLogin } from '../../auth/firebase';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = ({ user, setUser }) => {
+const LoginPage = ({ user, setUser, login }) => {
     const { showLogin, handleCloseLogin, handleShowLogin, handleShowRegister } =
-        useUserContext();
+        login;
+
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
 
