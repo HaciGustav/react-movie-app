@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useUserContext } from '../../context/UserProvider';
 
-import { Form, Input, Submit } from './LoginPage.style';
+import { BtnWrapper, Form, Input, Submit } from './LoginPage.style';
 import { handleLogin } from '../../auth/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = ({ user, setUser }) => {
-    const { showLogin, handleCloseLogin, handleShowLogin } = useUserContext();
+    const { showLogin, handleCloseLogin, handleShowLogin, handleShowRegister } =
+        useUserContext();
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
 
@@ -19,7 +21,7 @@ const LoginPage = ({ user, setUser }) => {
         setLoginPassword(e.target.value);
         console.log(loginPassword);
     };
-
+    const navigate = useNavigate();
     return (
         <>
             <Offcanvas
@@ -43,20 +45,30 @@ const LoginPage = ({ user, setUser }) => {
                             type={'password'}
                             placeholder="Password"
                         />
-                        <Submit
-                            onClick={(e) => {
-                                handleLogin(
-                                    e,
-                                    loginEmail,
-                                    loginPassword,
-                                    setLoginEmail,
-                                    setLoginPassword,
-                                    setUser
-                                );
-                                handleCloseLogin();
-                            }}>
-                            LOGIN
-                        </Submit>
+                        <BtnWrapper>
+                            <Submit
+                                onClick={(e) => {
+                                    handleLogin(
+                                        e,
+                                        loginEmail,
+                                        loginPassword,
+                                        setLoginEmail,
+                                        setLoginPassword,
+                                        setUser
+                                    );
+                                    handleCloseLogin();
+                                }}>
+                                LOGIN
+                            </Submit>
+                            <Submit
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleCloseLogin();
+                                    handleShowRegister();
+                                }}>
+                                REGISTER
+                            </Submit>
+                        </BtnWrapper>
                     </Form>
                 </Offcanvas.Body>
             </Offcanvas>

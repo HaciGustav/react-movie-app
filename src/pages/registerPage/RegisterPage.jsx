@@ -33,6 +33,12 @@ const RegisterPage = ({ user, setUser }) => {
                 <Offcanvas.Body>
                     <Form>
                         <Input
+                            type={'text'}
+                            placeholder="First Name"
+                            required
+                        />
+                        <Input type={'text'} placeholder="Last Name" required />
+                        <Input
                             onChange={(e) => handleEmail(e)}
                             value={registerEmail}
                             type={'email'}

@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/navbar/Navbar';
 import Main from '../pages/home/Home';
+import LoginPage from '../pages/loginpage/LoginPage';
 import MovieDetail from '../pages/movieDetails/MovieDetail';
+import RegisterPage from '../pages/registerPage/RegisterPage';
 const AppRouter = () => {
     const [movies, setMovies] = useState([]);
     const [searchValue, setSearchValue] = useState('');
@@ -39,6 +41,8 @@ const AppRouter = () => {
                     element={<Main movies={movies} setMovies={setMovies} />}
                 />
                 <Route path="/:id" element={<MovieDetail />} />
+                {/* <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} /> */}
             </Routes>
             <Footer />
         </BrowserRouter>

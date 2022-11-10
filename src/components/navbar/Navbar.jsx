@@ -22,11 +22,9 @@ import { handleLogout } from '../../auth/firebase';
 
 const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
     const { handleShowLogin, handleShowRegister } = useUserContext();
-
     const [user, setUser] = useState();
 
     const navigate = useNavigate();
-
     return (
         <Nav>
             <Logo

@@ -17,7 +17,10 @@ export const Input = styled.input`
         outline: none;
     }
 `;
-
+export const BtnWrapper = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+`;
 export const Submit = styled.button`
     padding: 0.3rem 1rem;
     border: none;
