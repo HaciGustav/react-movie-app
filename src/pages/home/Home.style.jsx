@@ -15,4 +15,13 @@ export const MovieCardContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
+    @media (max-width: 760px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 560px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 420px) {
+        grid-template-columns: 1fr;
+    }
 `;

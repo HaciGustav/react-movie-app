@@ -16,9 +16,13 @@ const AppRouter = () => {
             .then((res) => setMovies(res.data.results))
             .catch((err) => console.log(err.message));
     };
-    const handleSearch = (e) => {
+    const handleSearch = (e, user, handleShowLogin) => {
         e.preventDefault();
-        getSearchData();
+        if (user) {
+            getSearchData();
+        } else {
+            handleShowLogin();
+        }
     };
 
     return (

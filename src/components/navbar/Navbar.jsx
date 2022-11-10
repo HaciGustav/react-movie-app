@@ -48,7 +48,7 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
                 />
                 <SearchBtn
                     onClick={(e) => {
-                        handleSearch(e);
+                        handleSearch(e, user, handleShowLogin);
                         navigate('/');
                         setSearchValue('');
                     }}>

@@ -23,6 +23,7 @@ export const Info = styled.div`
     transform: translateX(100%);
     visibility: hidden;
     transition: transform 0.5s;
+    max-height: 60%;
 `;
 export const CardContainer = styled.div`
     display: flex;
