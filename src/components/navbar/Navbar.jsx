@@ -21,8 +21,28 @@ import { useNavigate } from 'react-router-dom';
 import { handleLogout } from '../../auth/firebase';
 
 const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
-    const { handleShowLogin, handleShowRegister } = useUserContext();
+    // const { handleShowLogin, handleShowRegister } = useUserContext();
     const [user, setUser] = useState();
+    //LOGIN PAGE
+    const [showLogin, setShowLogin] = useState(false);
+    const handleCloseLogin = () => setShowLogin(false);
+    const handleShowLogin = () => setShowLogin(true);
+    //REGISTER PAGE
+    const [showRegister, setShowRegister] = useState(false);
+    const handleCloseRegister = () => setShowRegister(false);
+    const handleShowRegister = () => setShowRegister(true);
+    const login = {
+        showLogin,
+        setShowLogin,
+        handleCloseLogin,
+        handleShowLogin,
+    };
+    const register = {
+        showRegister,
+        setShowRegister,
+        handleCloseRegister,
+        handleShowRegister,
+    };
 
     const navigate = useNavigate();
     return (
@@ -35,8 +55,8 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
                 <Part1>HG</Part1>
                 <Part2>MOVIES</Part2>
             </Logo>
-            <LoginPage user={user} setUser={setUser} />
-            <RegisterPage user={user} setUser={setUser} />
+            <LoginPage user={user} setUser={setUser} login={login} />
+            <RegisterPage user={user} setUser={setUser} register={register} />
             <Form>
                 <SearchBar
                     type={'search'}

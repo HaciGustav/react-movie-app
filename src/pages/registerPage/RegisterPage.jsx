@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { useUserContext } from '../../context/UserProvider';
 
 import { Form, Input, Submit } from './RegisterPage.style';
 import { handleRegister } from '../../auth/firebase';
-const RegisterPage = ({ user, setUser }) => {
-    const { showRegister, handleCloseRegister, handleShowRegister } =
-        useUserContext();
-
+const RegisterPage = ({ user, setUser, register }) => {
+    const { showRegister, handleCloseRegister, handleShowRegister } = register;
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
 
