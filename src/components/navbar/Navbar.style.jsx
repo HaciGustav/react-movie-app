@@ -7,6 +7,17 @@ export const Nav = styled.nav`
     background-color: #222;
     height: 3rem;
 `;
+export const Logo = styled.span`
+    cursor: pointer;
+`;
+export const Part1 = styled.span`
+    color: red;
+    font-size: 1.7rem;
+`;
+export const Part2 = styled.span`
+    color: white;
+    font-size: 1.2rem;
+`;
 
 export const SearchBar = styled.input`
     border: none;
@@ -38,10 +49,11 @@ export const SignInBtn = styled(SearchBtn)`
     border-radius: 0;
     background-color: inherit;
     height: 100%;
-    color: #000;
+    color: #ccc;
+    font-weight: 500;
 
     &:hover {
-        background-color: #a70000c9;
+        color: #a70000c9;
         border-bottom: 4px solid #2c0000;
     }
 `;

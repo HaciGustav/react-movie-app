@@ -2,19 +2,16 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useUserContext } from '../../context/UserProvider';
-import { useAuthContext } from '../../context/AuthProvider';
-import { Form, Input, Submit } from './RegisterPage.style';
 
-const RegisterPage = () => {
+import { Form, Input, Submit } from './RegisterPage.style';
+import { handleRegister } from '../../auth/firebase';
+const RegisterPage = ({ user, setUser }) => {
     const { showRegister, handleCloseRegister, handleShowRegister } =
         useUserContext();
-    const {
-        registerEmail,
-        registerPassword,
-        setRegisterEmail,
-        setRegisterPassword,
-        handleRegister,
-    } = useAuthContext();
+
+    const [registerEmail, setRegisterEmail] = useState('');
+    const [registerPassword, setRegisterPassword] = useState('');
+
     const handleEmail = (e) => {
         setRegisterEmail(e.target.value);
         console.log(registerEmail);
@@ -51,10 +48,17 @@ const RegisterPage = () => {
                         />
                         <Submit
                             onClick={(e) => {
-                                handleRegister(e);
+                                handleRegister(
+                                    e,
+                                    registerEmail,
+                                    registerPassword,
+                                    setRegisterEmail,
+                                    setRegisterPassword,
+                                    setUser
+                                );
                                 handleCloseRegister();
                             }}>
-                            sign up
+                            REGISTER
                         </Submit>
                     </Form>
                 </Offcanvas.Body>

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     BtnWrap,
     Form,
+    Logo,
     Nav,
+    Part1,
+    Part2,
     SearchBar,
     SearchBtn,
     SignInBtn,
@@ -10,26 +13,54 @@ import {
 } from './Navbar.style';
 import { BsSearch } from 'react-icons/bs';
 import { useUserContext } from '../../context/UserProvider';
-import { useAuthContext } from '../../context/AuthProvider';
-import { AiOutlineUser } from 'react-icons/ai';
 
-const Navbar = () => {
+import { AiOutlineUser } from 'react-icons/ai';
+import LoginPage from '../../pages/loginpage/LoginPage';
+import RegisterPage from '../../pages/registerPage/RegisterPage';
+import { useNavigate } from 'react-router-dom';
+import { handleLogout } from '../../auth/firebase';
+
+const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
     const { handleShowLogin, handleShowRegister } = useUserContext();
-    const { user, handleLogout } = useAuthContext();
+
+    const [user, setUser] = useState();
+
+    const navigate = useNavigate();
 
     return (
         <Nav>
-            <span>LOGO</span>
+            <Logo
+                onClick={() => {
+                    setMovies([]);
+                    navigate('/');
+                }}>
+                <Part1>HG</Part1>
+                <Part2>MOVIES</Part2>
+            </Logo>
+            <LoginPage user={user} setUser={setUser} />
+            <RegisterPage user={user} setUser={setUser} />
             <Form>
-                <SearchBar />
-                <SearchBtn>
+                <SearchBar
+                    type={'search'}
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    placeholder={'Search movies...'}
+                />
+                <SearchBtn
+                    onClick={(e) => {
+                        handleSearch(e);
+                        navigate('/');
+                        setSearchValue('');
+                    }}>
                     <BsSearch size={17} />
                 </SearchBtn>
             </Form>
             <BtnWrap>
                 {user ? (
                     <>
-                        <SignInBtn onClick={handleLogout}>LOG OUT</SignInBtn>
+                        <SignInBtn onClick={() => handleLogout(setUser)}>
+                            LOG OUT
+                        </SignInBtn>
                         <AiOutlineUser
                             size={30}
                             color="#000"

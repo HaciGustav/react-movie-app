@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import LoginPage from '../loginpage/LoginPage';
 import SlidingCarousel from '../../components/sliding-carousel/SlidingCarousel';
 import TopMoviesCarousel from '../../components/top-movies-carousel/TopMoviesCarousel';
-import { Container } from './Home.style';
+import { Container, MovieCardContainer } from './Home.style';
 import RegisterPage from '../registerPage/RegisterPage';
 import MovieCard from '../../components/movie-card/MovieCard';
 import axios from 'axios';
 
-const Main = () => {
+const Main = ({ movies }) => {
     const [data, setData] = useState(Array(20));
 
     const discoverMoviesFetch = async () => {
@@ -25,15 +25,21 @@ const Main = () => {
         discoverMoviesFetch();
     }, []);
 
-    console.log(data);
     return (
-        <Container>
-            {/* <MovieCard /> */}
-            <LoginPage />
-            <RegisterPage />
-            <TopMoviesCarousel data={data} />
-            <SlidingCarousel data={data} />
-        </Container>
+        <>
+            {movies.length ? (
+                <MovieCardContainer>
+                    {movies.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie} />
+                    ))}
+                </MovieCardContainer>
+            ) : (
+                <Container>
+                    <TopMoviesCarousel data={data} />
+                    <SlidingCarousel data={data} />
+                </Container>
+            )}
+        </>
     );
 };
 

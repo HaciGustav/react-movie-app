@@ -11,20 +11,23 @@ import {
 } from './SlidingCarousel.style';
 import { AiFillStar } from 'react-icons/ai';
 import { Card, Stack } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 function SlidingCarousel({ data }) {
     const slide1 = data.slice(0, 4);
     const slide2 = data.slice(5, 9);
     const slide3 = data.slice(10, 14);
     const slides = [slide1, slide2, slide3];
+    const navigate = useNavigate();
 
     return (
         <Container style={{ height: '30%' }}>
             <H2>Most Viewed</H2>
             <div className="">
                 <Carousel style={{}}>
-                    {slides.map((slide) => (
+                    {slides.map((slide, i) => (
                         <Carousel.Item
+                            key={i}
                             interval={2000}
                             style={{ backgroundColor: '#000' }}>
                             <Stack
@@ -33,7 +36,11 @@ function SlidingCarousel({ data }) {
                                 gap={3}>
                                 {slide.map((movie) => {
                                     return (
-                                        <CardContainer key={movie.id}>
+                                        <CardContainer
+                                            key={movie.id}
+                                            onClick={() =>
+                                                navigate(`/${movie.id}`)
+                                            }>
                                             <Img
                                                 className="d-block "
                                                 src={`https://image.tmdb.org/t/p/w1280${movie.poster_path}`}

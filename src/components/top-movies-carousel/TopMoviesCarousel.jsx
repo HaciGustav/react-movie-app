@@ -1,4 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
+import { useNavigate } from 'react-router-dom';
 import {
     Caption,
     Img,
@@ -10,8 +11,7 @@ import {
 
 function TopMoviesCarousel({ data }) {
     const topMovies = data.slice(0, 10);
-
-    console.log(topMovies);
+    const navigate = useNavigate();
     return (
         <Carousel
             style={{
@@ -22,7 +22,10 @@ function TopMoviesCarousel({ data }) {
             }}>
             {topMovies.map((movie) => {
                 return (
-                    <Carousel.Item key={movie?.id} interval={1500}>
+                    <Carousel.Item
+                        onClick={() => navigate(`/${movie.id}`)}
+                        key={movie?.id}
+                        interval={1500}>
                         <Img
                             className="d-block w-100"
                             alt="Slide"

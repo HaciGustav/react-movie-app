@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Img = styled.img`
     width: 100%;
+    cursor: pointer;
 `;
 export const Caption = styled.div`
     position: absolute;
@@ -10,6 +11,7 @@ export const Caption = styled.div`
     display: flex;
     align-items: end;
     width: 100%;
+    /* height: 40%; */
     background: rgb(0, 0, 0);
     background: linear-gradient(
         0deg,
@@ -17,7 +19,7 @@ export const Caption = styled.div`
         rgba(255, 255, 255, 0) 60%
     );
     color: #fff;
-    max-height: 50%;
+    /* max-height: 30%; */
 `;
 
 export const Poster = styled.img`
@@ -28,15 +30,16 @@ export const InfoDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
     text-align: left;
     padding-inline: 1rem;
-    padding-bottom: 5%;
+    /* padding-bottom: 3%; */
     background-color: #00000078;
 `;
 export const Label = styled.p`
     font-size: 1.2rem;
     font-weight: 600;
-    padding: 0 0.5rem;
+    /* padding: 0 0.2rem; */
     color: #bbb; ;
 `;
 export const Overview = styled.p`

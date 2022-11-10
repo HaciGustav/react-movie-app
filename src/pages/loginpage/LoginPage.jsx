@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useUserContext } from '../../context/UserProvider';
-import { useAuthContext } from '../../context/AuthProvider';
-import { Form, Input, Submit } from './LoginPage.style';
 
-const LoginPage = () => {
+import { Form, Input, Submit } from './LoginPage.style';
+import { handleLogin } from '../../auth/firebase';
+
+const LoginPage = ({ user, setUser }) => {
     const { showLogin, handleCloseLogin, handleShowLogin } = useUserContext();
-    const {
-        loginEmail,
-        loginPassword,
-        setLoginEmail,
-        setLoginPassword,
-        handleLogin,
-    } = useAuthContext();
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+
     const handleEmail = (e) => {
         setLoginEmail(e.target.value);
         console.log(loginEmail);
@@ -48,7 +45,14 @@ const LoginPage = () => {
                         />
                         <Submit
                             onClick={(e) => {
-                                handleLogin(e);
+                                handleLogin(
+                                    e,
+                                    loginEmail,
+                                    loginPassword,
+                                    setLoginEmail,
+                                    setLoginPassword,
+                                    setUser
+                                );
                                 handleCloseLogin();
                             }}>
                             LOGIN
