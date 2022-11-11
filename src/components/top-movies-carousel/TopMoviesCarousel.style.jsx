@@ -11,6 +11,7 @@ export const Caption = styled.div`
     display: flex;
     align-items: end;
     width: 100%;
+    height: 100%;
     /* height: 40%; */
     background: rgb(0, 0, 0);
     background: linear-gradient(
@@ -30,7 +31,7 @@ export const InfoDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    max-height: 60%;
     text-align: left;
     padding-inline: 1rem;
     /* padding-bottom: 3%; */
@@ -46,7 +47,7 @@ export const Overview = styled.p`
     font-size: 0.9rem;
     line-height: 1;
     margin-bottom: 25px;
-
+    max-height: 50%;
     word-wrap: break-word;
     @media (max-width: 576px) {
     }

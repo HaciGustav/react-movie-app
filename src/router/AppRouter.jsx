@@ -10,7 +10,7 @@ import RegisterPage from '../pages/registerPage/RegisterPage';
 const AppRouter = () => {
     const [movies, setMovies] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const apiKey = '9b6bf591aeebad9760d36eaff7737990';
+    const apiKey = process.env.REACT_APP_MOVIE_API_KEY;
 
     const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchValue}`;
     const getSearchData = () => {

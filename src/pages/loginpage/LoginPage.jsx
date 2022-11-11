@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
 
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { useUserContext } from '../../context/UserProvider';
 
 import { BtnWrapper, Form, Input, Submit } from './LoginPage.style';
 import { handleLogin } from '../../auth/firebase';
-import { useNavigate } from 'react-router-dom';
 
 const LoginPage = ({ user, setUser, login }) => {
-    const { showLogin, handleCloseLogin, handleShowLogin, handleShowRegister } =
-        login;
+    const { showLogin, handleCloseLogin, handleShowRegister } = login;
 
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
 
     const handleEmail = (e) => {
         setLoginEmail(e.target.value);
-        console.log(loginEmail);
     };
     const handlePassword = (e) => {
         setLoginPassword(e.target.value);
-        console.log(loginPassword);
     };
-    const navigate = useNavigate();
+
     return (
         <>
             <Offcanvas

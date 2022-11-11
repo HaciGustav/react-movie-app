@@ -21,7 +21,7 @@ export const Info = styled.div`
     left: 0;
     width: 100%;
     padding: 0.5rem;
-
+    max-height: 60%;
     overflow: hidden;
     transform: translateX(100%);
     visibility: hidden;

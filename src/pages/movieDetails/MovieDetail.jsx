@@ -26,7 +26,7 @@ const MovieDetail = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState({});
     const [video, setVideo] = useState([]);
-    const apiKey = '9b6bf591aeebad9760d36eaff7737990';
+    const apiKey = process.env.REACT_APP_MOVIE_API_KEY;
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
     const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US`;
     // get Movie data func.

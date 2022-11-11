@@ -18,11 +18,13 @@ import { AiOutlineUser } from 'react-icons/ai';
 import LoginPage from '../../pages/loginpage/LoginPage';
 import RegisterPage from '../../pages/registerPage/RegisterPage';
 import { useNavigate } from 'react-router-dom';
-import { handleLogout } from '../../auth/firebase';
+import { auth, handleLogout } from '../../auth/firebase';
 
 const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
-    // const { handleShowLogin, handleShowRegister } = useUserContext();
+    const { currentUser } = useUserContext();
+    const { email, photoURL, displayName } = currentUser;
     const [user, setUser] = useState();
+
     //LOGIN PAGE
     const [showLogin, setShowLogin] = useState(false);
     const handleCloseLogin = () => setShowLogin(false);
@@ -31,6 +33,9 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
     const [showRegister, setShowRegister] = useState(false);
     const handleCloseRegister = () => setShowRegister(false);
     const handleShowRegister = () => setShowRegister(true);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+
     const login = {
         showLogin,
         setShowLogin,
@@ -42,9 +47,14 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
         setShowRegister,
         handleCloseRegister,
         handleShowRegister,
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
     };
 
     const navigate = useNavigate();
+
     return (
         <Nav>
             <Logo
@@ -77,7 +87,7 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
                 {user ? (
                     <>
                         <SignInBtn onClick={() => handleLogout(setUser)}>
-                            LOG OUT
+                            {currentUser?.displayName}
                         </SignInBtn>
                         <AiOutlineUser
                             size={30}

@@ -20,3 +20,6 @@ export const CopyRight = styled(Contact)`
     font-size: 0.8rem;
     color: white;
 `;
+export const Link = styled.a`
+    text-decoration: none;
+`;

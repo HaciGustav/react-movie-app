@@ -5,25 +5,16 @@ import {
     signOut,
     getAuth,
     onAuthStateChanged,
+    updateProfile,
 } from 'firebase/auth';
-import { useState } from 'react';
-
-//const firebaseConfig = {
-//   apiKey: process.env.REACT_APP_FIREBASE_KEY,
-//     authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
-//     projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-//     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-//     messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
-//     appId: process.env.REACT_APP_FIREBASE_APP_ID,
-// };
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyB8869WXFTP330p12KKPJlvl1f7bspRZRE',
-    authDomain: 'hg-movie-app.firebaseapp.com',
-    projectId: 'hg-movie-app',
-    storageBucket: 'hg-movie-app.appspot.com',
-    messagingSenderId: '363634719713',
-    appId: '1:363634719713:web:bd2f3891bcdae362e730a0',
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -36,17 +27,22 @@ export const handleRegister = async (
     registerPassword,
     setRegisterEmail,
     setRegisterPassword,
-    setUser
+    setUser,
+    firstName,
+    lastName
 ) => {
     e.preventDefault();
-
+    const displayName = `${firstName} ${lastName}`;
     try {
         const benutzer = await createUserWithEmailAndPassword(
             auth,
             registerEmail,
             registerPassword
         );
-
+        await updateProfile(auth.currentUser, {
+            displayName: displayName,
+        });
+        console.log(auth.currentUser);
         setUser(benutzer);
     } catch (error) {
         alert(error.message);
@@ -54,6 +50,7 @@ export const handleRegister = async (
     setRegisterEmail('');
     setRegisterPassword('');
 };
+
 export const handleLogin = async (
     e,
     loginEmail,
@@ -83,15 +80,15 @@ export const handleLogout = async (setUser) => {
     setUser(null);
 };
 
-export const userObserver = () => {
+export const userObserver = (setCurrentUser) => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
-            const uid = user.uid;
-            // ...
+            const { displayName, email, photoURL } = user;
+            setCurrentUser({ email, displayName, photoURL });
+
+            // const uid = user.uid;
         } else {
-            // User is signed out
+            console.log('User is signed out');
             // ...
         }
     });

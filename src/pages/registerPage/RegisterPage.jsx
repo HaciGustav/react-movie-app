@@ -5,17 +5,22 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Form, Input, Submit } from './RegisterPage.style';
 import { handleRegister } from '../../auth/firebase';
 const RegisterPage = ({ user, setUser, register }) => {
-    const { showRegister, handleCloseRegister, handleShowRegister } = register;
+    const {
+        showRegister,
+        handleCloseRegister,
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+    } = register;
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
 
     const handleEmail = (e) => {
         setRegisterEmail(e.target.value);
-        console.log(registerEmail);
     };
     const handlePassword = (e) => {
         setRegisterPassword(e.target.value);
-        console.log(registerPassword);
     };
 
     return (
@@ -30,11 +35,19 @@ const RegisterPage = ({ user, setUser, register }) => {
                 <Offcanvas.Body>
                     <Form>
                         <Input
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
                             type={'text'}
                             placeholder="First Name"
                             required
                         />
-                        <Input type={'text'} placeholder="Last Name" required />
+                        <Input
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            type={'text'}
+                            placeholder="Last Name"
+                            required
+                        />
                         <Input
                             onChange={(e) => handleEmail(e)}
                             value={registerEmail}
@@ -57,7 +70,9 @@ const RegisterPage = ({ user, setUser, register }) => {
                                     registerPassword,
                                     setRegisterEmail,
                                     setRegisterPassword,
-                                    setUser
+                                    setUser,
+                                    firstName,
+                                    lastName
                                 );
                                 handleCloseRegister();
                             }}>
