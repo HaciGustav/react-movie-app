@@ -4,14 +4,14 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #222;
+    background-color: #440000;
     height: 3rem;
 `;
 export const Logo = styled.span`
     cursor: pointer;
 `;
 export const Part1 = styled.span`
-    color: red;
+    color: #000;
     font-size: 1.7rem;
 `;
 export const Part2 = styled.span`
@@ -53,8 +53,8 @@ export const SignInBtn = styled(SearchBtn)`
     font-weight: 500;
 
     &:hover {
-        color: #a70000c9;
-        border-bottom: 4px solid #2c0000;
+        color: #000;
+        border-bottom: 4px solid #000;
     }
 `;
 export const SignUpBtn = styled(SignInBtn)``;

@@ -87,13 +87,15 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
                 {user ? (
                     <>
                         <SignInBtn onClick={() => handleLogout(setUser)}>
-                            {currentUser?.displayName}
+                            {currentUser.displayName
+                                ? displayName.toUpperCase()
+                                : 'USER'}
                         </SignInBtn>
                         <AiOutlineUser
                             size={30}
-                            color="#000"
+                            color="#440000"
                             style={{
-                                backgroundColor: '#444',
+                                backgroundColor: '#000',
                                 borderRadius: '50%',
                             }}
                         />

@@ -23,7 +23,11 @@ const LoginPage = ({ user, setUser, login }) => {
             <Offcanvas
                 show={showLogin}
                 onHide={handleCloseLogin}
-                style={{ backgroundColor: '#222 ', color: '#000' }}>
+                style={{
+                    backgroundColor: '#440000 ',
+                    borderRight: '8px solid black',
+                    color: '#000',
+                }}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Login</Offcanvas.Title>
                 </Offcanvas.Header>

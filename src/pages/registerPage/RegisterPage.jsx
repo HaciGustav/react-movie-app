@@ -28,7 +28,11 @@ const RegisterPage = ({ user, setUser, register }) => {
             <Offcanvas
                 show={showRegister}
                 onHide={handleCloseRegister}
-                style={{ backgroundColor: '#222 ', color: '#000' }}>
+                style={{
+                    backgroundColor: '#440000 ',
+                    borderRight: '8px solid black',
+                    color: '#000',
+                }}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Register</Offcanvas.Title>
                 </Offcanvas.Header>

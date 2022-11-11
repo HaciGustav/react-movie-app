@@ -11,10 +11,16 @@ export const Input = styled.input`
     padding: 0.5rem;
     border: none;
     border-radius: 5px;
-    background-color: #aaa;
+    background-color: transparent;
+    border-bottom: 4px solid #aaa;
 
+    transition: all 0.5s;
     &:focus {
         outline: none;
+        background-color: #aaa;
+    }
+    &:hover {
+        background-color: #aaa;
     }
 `;
 
@@ -23,6 +29,14 @@ export const Submit = styled.button`
     border: none;
     border-radius: 5px;
     background-color: #000;
-    color: #444;
+    color: #440000;
+    font-weight: 600;
     align-self: center;
+    transition: all 0.2s;
+    &:hover {
+        color: darkred;
+    }
+    &:active {
+        transform: scale(0.95);
+    }
 `;
