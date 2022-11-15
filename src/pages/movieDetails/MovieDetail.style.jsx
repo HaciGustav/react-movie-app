@@ -41,6 +41,9 @@ export const RateLabel = styled.p`
     font-size: 1.2rem;
     font-weight: 600;
     margin: 0;
+    @media (max-width: 560px) {
+        font-size: 1rem;
+    }
 `;
 
 export const Popularity = styled.span`

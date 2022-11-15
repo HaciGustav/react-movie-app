@@ -7,6 +7,9 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+    @media (max-width: 560px) {
+        width: 100%;
+    }
 `;
 
 export const MovieCardContainer = styled.div`
