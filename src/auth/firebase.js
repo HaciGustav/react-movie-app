@@ -6,6 +6,8 @@ import {
     getAuth,
     onAuthStateChanged,
     updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -39,10 +41,11 @@ export const handleRegister = async (
             registerEmail,
             registerPassword
         );
+        console.log(benutzer);
         await updateProfile(auth.currentUser, {
             displayName: displayName,
         });
-        console.log(auth.currentUser);
+
         setUser(benutzer);
     } catch (error) {
         alert(error.message);
@@ -92,4 +95,16 @@ export const userObserver = (setCurrentUser) => {
             // ...
         }
     });
+};
+//! Sign in with Google
+export const signUpWithGoogle = (setUser) => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log(result.user);
+            setUser(result.user);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 };

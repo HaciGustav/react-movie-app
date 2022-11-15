@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
-import { BtnWrapper, Form, Input, Submit } from './LoginPage.style';
-import { handleLogin } from '../../auth/firebase';
+import {
+    BtnWrapper,
+    Form,
+    Input,
+    SignInGoogleBtn,
+    Submit,
+} from './LoginPage.style';
+import { handleLogin, signUpWithGoogle } from '../../auth/firebase';
+import { FcGoogle } from 'react-icons/fc';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = ({ user, setUser, login }) => {
     const { showLogin, handleCloseLogin, handleShowRegister } = login;
@@ -17,6 +23,7 @@ const LoginPage = ({ user, setUser, login }) => {
     const handlePassword = (e) => {
         setLoginPassword(e.target.value);
     };
+    const navigate = useNavigate();
 
     return (
         <>
@@ -63,12 +70,21 @@ const LoginPage = ({ user, setUser, login }) => {
                             <Submit
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    handleCloseLogin();
                                     handleShowRegister();
+                                    handleCloseLogin();
                                 }}>
                                 REGISTER
-                            </Submit>
+                            </Submit>{' '}
                         </BtnWrapper>
+                        <SignInGoogleBtn
+                            onClick={(e) => {
+                                e.preventDefault();
+                                signUpWithGoogle(setUser);
+                                handleCloseLogin();
+                                console.log(user);
+                            }}>
+                            <FcGoogle /> Continue With Google
+                        </SignInGoogleBtn>
                     </Form>
                 </Offcanvas.Body>
             </Offcanvas>

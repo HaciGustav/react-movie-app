@@ -40,6 +40,8 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
     const handleShowRegister = () => setShowRegister(true);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    // Hamburger menü
+    const [isShown, setIsShown] = useState(false);
 
     const login = {
         showLogin,
@@ -65,11 +67,23 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
             <SignInBtn onClick={() => handleLogout(setUser)}>
                 {currentUser.displayName ? displayName.toUpperCase() : 'USER'}
             </SignInBtn>
-            <Avatar src={'./assets/avatar2.jpg'} />
-            <HamburgerWrap>
-                <GiHamburgerMenu />
-                <HamburgerMenü>
-                    <Li></Li>
+            <Avatar
+                onClick={() => handleLogout(setUser)}
+                src={'./assets/avatar2.jpg'}
+            />
+            <HamburgerWrap onClick={() => setIsShown(!isShown)}>
+                <GiHamburgerMenu size={20} color={'#fff'} />
+                <HamburgerMenü isShown={isShown}>
+                    <Li>
+                        <SignUpBtn onClick={() => handleLogout(setUser)}>
+                            LOG OUT
+                        </SignUpBtn>
+                    </Li>
+                    <Li>
+                        <SignUpBtn onClick={handleShowRegister}>
+                            REGISTER
+                        </SignUpBtn>
+                    </Li>
                 </HamburgerMenü>
             </HamburgerWrap>
         </>
@@ -77,7 +91,20 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
     const NotLoggedIn = (
         <>
             <SignInBtn onClick={handleShowLogin}>LOG IN</SignInBtn>
-            <SignUpBtn onClick={handleShowRegister}>REGISTER</SignUpBtn>
+            <SignInBtn onClick={handleShowRegister}>REGISTER</SignInBtn>
+            <HamburgerWrap onClick={() => setIsShown(!isShown)}>
+                <GiHamburgerMenu size={30} color={'#fff'} />
+                <HamburgerMenü isShown={isShown}>
+                    <Li>
+                        <SignUpBtn onClick={handleShowLogin}>LOG IN</SignUpBtn>
+                    </Li>
+                    <Li>
+                        <SignUpBtn onClick={handleShowRegister}>
+                            REGISTER
+                        </SignUpBtn>
+                    </Li>
+                </HamburgerMenü>
+            </HamburgerWrap>
         </>
     );
     return (

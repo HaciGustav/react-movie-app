@@ -24,7 +24,7 @@ export const MovieName = styled.h2`
         font-size: 1em;
     }
     @media (min-width: 415px) and (max-width: 600px) {
-        font-size: 2em;
+        font-size: 1.5em;
     }
 `;
 export const RateDiv = styled.div`
@@ -54,6 +54,9 @@ export const Popularity = styled.span`
     color: red;
     border-right: 4px solid ${({ color }) => color && color};
     border-bottom: 4px solid ${({ color }) => color && color};
+    @media (max-width: 560px) {
+        font-size: 1rem;
+    }
 `;
 export const IframeDiv = styled.div`
     display: flex;

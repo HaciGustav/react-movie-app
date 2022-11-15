@@ -56,8 +56,16 @@ export const SignInBtn = styled(SearchBtn)`
         color: #000;
         border-bottom: 4px solid #000;
     }
+    @media (max-width: 560px) {
+        display: none;
+    }
 `;
-export const SignUpBtn = styled(SignInBtn)``;
+export const SignUpBtn = styled(SignInBtn)`
+    display: none;
+    @media (max-width: 560px) {
+        display: inline;
+    }
+`;
 export const BtnWrap = styled.div`
     display: flex;
     align-items: center;
@@ -69,17 +77,38 @@ export const Avatar = styled.img`
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
+    cursor: pointer;
 `;
 
 export const HamburgerMenü = styled.ul`
-    display: none;
+    display: ${({ isShown }) => (isShown ? 'block' : 'none')};
+    position: absolute;
+    right: 0;
+    background-color: white;
+    transform: translateY(0%);
+    z-index: 5;
+    background-color: #333;
+
+    border-radius: 10px 0 10px 10px;
+    padding: 0.5rem;
+    /* &:hover {
+        display: block;
+    } */
 `;
-export const Li = styled.li``;
+export const Li = styled.li`
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+`;
 export const HamburgerWrap = styled.span`
+    position: relative;
+    z-index: 5;
     display: none;
+    cursor: pointer;
+    position: relative;
     &:hover ${HamburgerMenü} {
         display: block;
     }
+
     @media (max-width: 560px) {
         display: inline;
     }

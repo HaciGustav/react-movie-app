@@ -32,7 +32,7 @@ export const Submit = styled.button`
     border: none;
     border-radius: 5px;
     background-color: #000;
-    color: #440000;
+    color: #aaa;
     align-self: center;
     transition: all 0.2s;
     &:hover {
@@ -42,4 +42,7 @@ export const Submit = styled.button`
     &:active {
         transform: scale(0.95);
     }
+`;
+export const SignInGoogleBtn = styled(Submit)`
+    padding: 0.5rem 1rem;
 `;
