@@ -18,12 +18,12 @@ import {
 import { BsSearch } from 'react-icons/bs';
 import { useUserContext } from '../../context/UserProvider';
 
-import { AiOutlineUser } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import LoginPage from '../../pages/loginpage/LoginPage';
 import RegisterPage from '../../pages/registerPage/RegisterPage';
 import { useNavigate } from 'react-router-dom';
-import { auth, handleLogout } from '../../auth/firebase';
+import { handleLogout } from '../../auth/firebase';
+import { ToastContainer } from 'react-toastify';
 
 const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
     const { currentUser } = useUserContext();

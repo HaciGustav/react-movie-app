@@ -1,16 +1,18 @@
-import { useEffect } from 'react';
-import './App.css';
-import { userObserver } from './auth/firebase';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import UserProvider from './context/UserProvider';
 import AppRouter from './router/AppRouter';
 import GlobalStyle from './style/GlobalStyle';
 
 function App() {
     return (
-        <UserProvider>
-            <AppRouter />
-            <GlobalStyle />
-        </UserProvider>
+        <>
+            <UserProvider>
+                <AppRouter />
+                <GlobalStyle />
+                <ToastContainer />
+            </UserProvider>
+        </>
     );
 }
 

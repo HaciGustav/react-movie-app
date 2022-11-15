@@ -9,6 +9,7 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
 } from 'firebase/auth';
+import { toastFailedNotify, toastSuccessNotify } from '../helpers/ToastNotify';
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -34,6 +35,7 @@ export const handleRegister = async (
     lastName
 ) => {
     e.preventDefault();
+
     const displayName = `${firstName} ${lastName}`;
     try {
         const benutzer = await createUserWithEmailAndPassword(
@@ -41,14 +43,15 @@ export const handleRegister = async (
             registerEmail,
             registerPassword
         );
-        console.log(benutzer);
+
         await updateProfile(auth.currentUser, {
             displayName: displayName,
         });
 
         setUser(benutzer);
+        toastSuccessNotify('Signed Up Successfully ');
     } catch (error) {
-        alert(error.message);
+        toastFailedNotify(error.message);
     }
     setRegisterEmail('');
     setRegisterPassword('');
@@ -70,10 +73,10 @@ export const handleLogin = async (
             loginEmail,
             loginPassword
         );
-
+        toastSuccessNotify('Signed In Successfully ');
         setUser(benutzer);
     } catch (error) {
-        alert(error.message);
+        toastFailedNotify(error.message);
     }
     setLoginEmail('');
     setLoginPassword('');
@@ -81,6 +84,7 @@ export const handleLogin = async (
 export const handleLogout = async (setUser) => {
     await signOut(auth);
     setUser(null);
+    toastSuccessNotify("Signed Out! We'll miss you!");
 };
 
 export const userObserver = (setCurrentUser) => {
@@ -103,6 +107,7 @@ export const signUpWithGoogle = (setUser) => {
         .then((result) => {
             console.log(result.user);
             setUser(result.user);
+            toastSuccessNotify('Signed Up Successfully ');
         })
         .catch((error) => {
             console.log(error);

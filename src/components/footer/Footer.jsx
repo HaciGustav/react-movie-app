@@ -1,6 +1,7 @@
 import React from 'react';
 import { Contact, Container, CopyRight, Link } from './Footer.style';
 import { AiFillGithub, AiFillLinkedin, AiFillMail } from 'react-icons/ai';
+import { toastSuccessNotify } from '../../helpers/ToastNotify';
 
 const Footer = () => {
     return (

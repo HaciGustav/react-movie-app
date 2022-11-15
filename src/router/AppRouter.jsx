@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/navbar/Navbar';
+import { toastWarnNotify } from '../helpers/ToastNotify';
 import Main from '../pages/home/Home';
 import LoginPage from '../pages/loginpage/LoginPage';
 import MovieDetail from '../pages/movieDetails/MovieDetail';
@@ -24,6 +26,7 @@ const AppRouter = () => {
             getSearchData();
         } else {
             handleShowLogin();
+            toastWarnNotify('Please Log In');
         }
     };
 
