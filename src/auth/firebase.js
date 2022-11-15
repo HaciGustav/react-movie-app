@@ -95,7 +95,6 @@ export const userObserver = (setCurrentUser) => {
 
             // const uid = user.uid;
         } else {
-            console.log('User is signed out');
             // ...
         }
     });
@@ -111,5 +110,6 @@ export const signUpWithGoogle = (setUser) => {
         })
         .catch((error) => {
             console.log(error);
+            toastFailedNotify('Something went wrong! Try again!');
         });
 };

@@ -11,7 +11,6 @@ export const toastSuccessNotify = (msg) => {
         progress: undefined,
         theme: 'light',
     });
-    console.log('worked');
 };
 export const toastWarnNotify = (msg) => {
     toast.warn(msg, {
@@ -24,7 +23,6 @@ export const toastWarnNotify = (msg) => {
         progress: undefined,
         theme: 'light',
     });
-    console.log('worked');
 };
 export const toastFailedNotify = (msg) => {
     toast.error(msg, {
@@ -37,5 +35,4 @@ export const toastFailedNotify = (msg) => {
         progress: undefined,
         theme: 'light',
     });
-    console.log('worked');
 };
