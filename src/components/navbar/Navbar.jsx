@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import {
+    Avatar,
     BtnWrap,
     Form,
+    HamburgerWrap,
     Logo,
     Nav,
     Part1,
@@ -10,11 +12,14 @@ import {
     SearchBtn,
     SignInBtn,
     SignUpBtn,
+    Li,
+    HamburgerMenü,
 } from './Navbar.style';
 import { BsSearch } from 'react-icons/bs';
 import { useUserContext } from '../../context/UserProvider';
 
 import { AiOutlineUser } from 'react-icons/ai';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import LoginPage from '../../pages/loginpage/LoginPage';
 import RegisterPage from '../../pages/registerPage/RegisterPage';
 import { useNavigate } from 'react-router-dom';
@@ -41,6 +46,7 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
         setShowLogin,
         handleCloseLogin,
         handleShowLogin,
+        handleShowRegister,
     };
     const register = {
         showRegister,
@@ -54,7 +60,26 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
     };
 
     const navigate = useNavigate();
-
+    const LoggedIn = (
+        <>
+            <SignInBtn onClick={() => handleLogout(setUser)}>
+                {currentUser.displayName ? displayName.toUpperCase() : 'USER'}
+            </SignInBtn>
+            <Avatar src={'./assets/avatar2.jpg'} />
+            <HamburgerWrap>
+                <GiHamburgerMenu />
+                <HamburgerMenü>
+                    <Li></Li>
+                </HamburgerMenü>
+            </HamburgerWrap>
+        </>
+    );
+    const NotLoggedIn = (
+        <>
+            <SignInBtn onClick={handleShowLogin}>LOG IN</SignInBtn>
+            <SignUpBtn onClick={handleShowRegister}>REGISTER</SignUpBtn>
+        </>
+    );
     return (
         <Nav>
             <Logo
@@ -83,32 +108,7 @@ const Navbar = ({ searchValue, setSearchValue, handleSearch, setMovies }) => {
                     <BsSearch size={17} />
                 </SearchBtn>
             </Form>
-            <BtnWrap>
-                {user ? (
-                    <>
-                        <SignInBtn onClick={() => handleLogout(setUser)}>
-                            {currentUser.displayName
-                                ? displayName.toUpperCase()
-                                : 'USER'}
-                        </SignInBtn>
-                        <AiOutlineUser
-                            size={30}
-                            color="#440000"
-                            style={{
-                                backgroundColor: '#000',
-                                borderRadius: '50%',
-                            }}
-                        />
-                    </>
-                ) : (
-                    <>
-                        <SignInBtn onClick={handleShowLogin}>LOG IN</SignInBtn>
-                        <SignUpBtn onClick={handleShowRegister}>
-                            REGISTER
-                        </SignUpBtn>
-                    </>
-                )}
-            </BtnWrap>
+            <BtnWrap>{user ? LoggedIn : NotLoggedIn}</BtnWrap>
         </Nav>
     );
 };

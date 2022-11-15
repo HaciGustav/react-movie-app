@@ -64,3 +64,23 @@ export const BtnWrap = styled.div`
     column-gap: 5px;
     height: 100%;
 `;
+export const Avatar = styled.img`
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+`;
+
+export const HamburgerMenü = styled.ul`
+    display: none;
+`;
+export const Li = styled.li``;
+export const HamburgerWrap = styled.span`
+    display: none;
+    &:hover ${HamburgerMenü} {
+        display: block;
+    }
+    @media (max-width: 560px) {
+        display: inline;
+    }
+`;

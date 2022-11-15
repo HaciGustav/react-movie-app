@@ -21,7 +21,6 @@ export const Info = styled.div`
     padding: 0.5rem;
     overflow: hidden;
     transform: translateX(100%);
-    visibility: hidden;
     transition: transform 0.5s;
     max-height: 60%;
 `;
@@ -30,9 +29,9 @@ export const CardContainer = styled.div`
     flex-direction: column;
     background-color: black;
     position: relative;
+    overflow: hidden;
     &:hover ${Info} {
         transform: translateX(0%);
-        visibility: visible;
     }
 `;
 
@@ -51,4 +50,7 @@ export const MovieName = styled.h3`
     text-align: left;
     padding-left: 3px;
     color: #eee;
+    @media (max-width: 560px) {
+        font-size: 0.7rem;
+    }
 `;
